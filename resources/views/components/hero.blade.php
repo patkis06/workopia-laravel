@@ -1,5 +1,5 @@
 <section
-            class="hero relative bg-cover bg-center bg-no-repeat h-80 flex items-center"
+            class="hero relative bg-cover bg-center bg-no-repeat h-80 flex items-center" style="background-image: url('{{ asset('images/hero.jpg')}}');"
         >
             <div class="overlay"></div>
             <div class="container mx-auto text-center z-10">
