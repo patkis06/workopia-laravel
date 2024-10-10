@@ -21,9 +21,14 @@ class JobController extends Controller
         return redirect()->route('jobs.index');
     }
 
-    public function show($id)
+    public function show()
     {
         return view('pages.jobs.show');
+    }
+
+    public function saved()
+    {
+        return view('pages.jobs.saved');
     }
 
     public function edit($id)

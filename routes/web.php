@@ -12,7 +12,11 @@ Route::get('/dashboard', function () {
     return view('pages.dashboard');
 });
 
-Route::resource('/jobs', JobController::class);
+Route::get('jobs', [JobController::class, 'index']);
+Route::get('jobs/show', [JobController::class, 'show']);
+Route::get('jobs/saved', [JobController::class, 'saved']);
+Route::get('jobs/create', [JobController::class, 'create']);
+Route::get('jobs/edit', [JobController::class, 'edit']);
 
 Route::get('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'register']);
