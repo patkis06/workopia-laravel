@@ -4,34 +4,12 @@
             <a href="{{url('')}}">Workopia</a>
         </h1>
         <nav class="hidden md:flex items-center space-x-4">
-            <a href="{{url('jobs')}}" class="text-white hover:underline py-2"
-                >All Jobs</a
-            >
-            <a
-                href="{{url('jobs/saved')}}"
-                class="text-white hover:underline py-2"
-                >Saved Jobs</a
-            >
-            <a href={{url('login')}} class="text-white hover:underline py-2"
-                >Login</a
-            >
-            <a
-                href="{{url('register')}}"
-                class="text-white hover:underline py-2"
-                >Register</a
-            >
-            <a
-                href="{{url('dashboard')}}"
-                class="hover:underline py-2 font-bold text-yellow-500"
-            >
-                <i class="fa fa-gauge mr-1"></i> Dashboard
-            </a>
-            <a
-                href="{{url('jobs/create')}}"
-                class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300"
-            >
-                <i class="fa fa-edit"></i> Create Job
-            </a>
+            <x-nav-link href="{{url('jobs')}}" :active="request()->is('jobs')">All Jobs</x-nav-link>
+            <x-nav-link href="{{url('jobs/saved')}}" :active="request()->is('jobs/saved')">Saved Jobs</x-nav-link>
+            <x-nav-link href="{{url('login')}}" :active="request()->is('login')">Login</x-nav-link>
+            <x-nav-link href="{{url('register')}}" :active="request()->is('register')">Register</x-nav-link>
+            <x-nav-link href="{{url('dashboard')}}" :active="request()->is('dashboard')" icon="gauge" >Dashboard</x-nav-link>
+            <x-button-link href="{{url('jobs/create')}}" :active="request()->is('jobs/create')" icon="edit">Create Job</x-button-link>
         </nav>
         <button
             id="hamburger"
