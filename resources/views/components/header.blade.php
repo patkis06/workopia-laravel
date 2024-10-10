@@ -21,40 +21,13 @@
     <!-- Mobile Menu -->
     <div
         id="mobile-menu"
-        class="hidden md:hidden bg-blue-900 text-white mt-5 pb-4 space-y-2"
+        class="hidden1 md:hidden bg-blue-900 text-white mt-5 pb-4 space-y-2"
     >
-        <a href="jobs.html" class="block px-4 py-2 hover:bg-blue-700"
-            >All Jobs</a
-        >
-        <a
-            href="saved-jobs.html"
-            class="block px-4 py-2 hover:bg-blue-700"
-            >Saved Jobs</a
-        >
-        <a
-            href="dashboard.html"
-            class="block px-4 py-2 hover:bg-blue-700"
-            >Dashboard</a
-        >
-        <a href="login.html" class="block px-4 py-2 hover:bg-blue-700"
-            >Login</a
-        >
-        <a
-            href="register.html"
-            class="block px-4 py-2 hover:bg-blue-700"
-            >Register</a
-        >
-        <a
-            href="dashboard.html"
-            class="block hover:underline py-2 font-bold text-yellow-500"
-        >
-            <i class="fa fa-gauge mr-1"></i> Dashboard
-        </a>
-        <a
-            href="create-job.html"
-            class="block px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black"
-        >
-            <i class="fa fa-edit"></i> Create Job
-        </a>
+        <x-mobile-nav-link href="{{url('jobs')}}" :active="request()->is('jobs')">All Jobs</x-mobile-nav-link>
+        <x-mobile-nav-link href="{{url('jobs/saved')}}" :active="request()->is('jobs/saved')">Saved Jobs</x-mobile-nav-link>
+        <x-mobile-nav-link href="{{url('login')}}" :active="request()->is('login')">Login</x-mobile-nav-link>
+        <x-mobile-nav-link href="{{url('register')}}" :active="request()->is('register')">Register</x-mobile-nav-link>
+        <x-mobile-nav-link href="{{url('dashboard')}}" :active="request()->is('dashboard')" icon="gauge" >Dashboard</x-mobile-nav-link>
+        <x-button-link href="{{url('jobs/create')}}" :active="request()->is('jobs/create')" icon="edit" class="block px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black">Create Job</x-button-link>
     </div>
 </header>
