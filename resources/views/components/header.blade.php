@@ -14,11 +14,7 @@
         <x-mobile-hamburger-button/>
     </div>
     <!-- Mobile Menu -->
-    <div x-show="$store.menu.open">
-        Content that should be visible when the menu is open
-    </div>
-
-    <div id="mobile-menu" class="hidden md:hidden bg-blue-900 text-white mt-5 pb-4 space-y-2">
+    <div x-data id="mobile-menu" :class="$store.menu.open ? 'block md:hidden bg-blue-900 text-white mt-5 pb-4 space-y-2' : 'hidden'">
         <x-mobile-nav-link href="{{url('jobs')}}" :active="request()->is('jobs')">All Jobs</x-mobile-nav-link>
         <x-mobile-nav-link href="{{url('jobs/saved')}}" :active="request()->is('jobs/saved')">Saved Jobs</x-mobile-nav-link>
         <x-mobile-nav-link href="{{url('login')}}" :active="request()->is('login')">Login</x-mobile-nav-link>

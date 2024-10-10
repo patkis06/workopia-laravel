@@ -1,4 +1,6 @@
 <button
+    x-data 
+    @click="$store.menu.toggle()"
     id="hamburger"
     class="text-white md:hidden flex items-center"
 >
