@@ -11,18 +11,14 @@
             <x-nav-link href="{{url('dashboard')}}" :active="request()->is('dashboard')" icon="gauge" >Dashboard</x-nav-link>
             <x-button-link href="{{url('jobs/create')}}" :active="request()->is('jobs/create')" icon="edit">Create Job</x-button-link>
         </nav>
-        <button
-            id="hamburger"
-            class="text-white md:hidden flex items-center"
-        >
-            <i class="fa fa-bars text-2xl"></i>
-        </button>
+        <x-mobile-hamburger-button/>
     </div>
     <!-- Mobile Menu -->
-    <div
-        id="mobile-menu"
-        class="hidden1 md:hidden bg-blue-900 text-white mt-5 pb-4 space-y-2"
-    >
+    <div x-show="$store.menu.open">
+        Content that should be visible when the menu is open
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-blue-900 text-white mt-5 pb-4 space-y-2">
         <x-mobile-nav-link href="{{url('jobs')}}" :active="request()->is('jobs')">All Jobs</x-mobile-nav-link>
         <x-mobile-nav-link href="{{url('jobs/saved')}}" :active="request()->is('jobs/saved')">Saved Jobs</x-mobile-nav-link>
         <x-mobile-nav-link href="{{url('login')}}" :active="request()->is('login')">Login</x-mobile-nav-link>

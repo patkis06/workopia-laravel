@@ -20,5 +20,6 @@
         <x-bottom-banner />
 
         @vite('resources/js/app.js')
+        </script>
     </body>
 </html>
