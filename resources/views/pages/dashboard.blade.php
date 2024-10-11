@@ -7,7 +7,7 @@
             </h3>
             <form
                 method="POST"
-                action="/jobs"
+                action="/listings"
                 enctype="multipart/form-data"
             >
                 <div class="mb-4">

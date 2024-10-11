@@ -8,41 +8,41 @@ class ListingController extends Controller
 {
     public function index()
     {
-        return view('pages.jobs.index');
+        return view('pages.listings.index');
     }
 
     public function create()
     {
-        return view('pages.jobs.create');
+        return view('pages.listings.create');
     }
 
     public function store(Request $request)
     {
-        return redirect()->route('jobs.index');
+        return redirect()->route('listings.index');
     }
 
     public function show()
     {
-        return view('pages.jobs.show');
+        return view('pages.listings.show');
     }
 
     public function saved()
     {
-        return view('pages.jobs.saved');
+        return view('pages.listings.saved');
     }
 
     public function edit($id)
     {
-        return view('pages.jobs.edit');
+        return view('pages.listings.edit');
     }
 
     public function update(Request $request, $id)
     {
-        return redirect()->route('jobs.index');
+        return redirect()->route('listings.index');
     }
 
     public function destroy($id)
     {
-        return redirect()->route('jobs.index');
+        return redirect()->route('listings.index');
     }
 }

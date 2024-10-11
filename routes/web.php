@@ -12,11 +12,11 @@ Route::get('/dashboard', function () {
     return view('pages.dashboard');
 });
 
-Route::get('jobs', [ListingController::class, 'index']);
-Route::get('jobs/show', [ListingController::class, 'show']);
-Route::get('jobs/saved', [ListingController::class, 'saved']);
-Route::get('jobs/create', [ListingController::class, 'create']);
-Route::get('jobs/edit', [ListingController::class, 'edit']);
+Route::get('listings', [ListingController::class, 'index']);
+Route::get('listings/show', [ListingController::class, 'show']);
+Route::get('listings/saved', [ListingController::class, 'saved']);
+Route::get('listings/create', [ListingController::class, 'create']);
+Route::get('listings/edit', [ListingController::class, 'edit']);
 
 Route::get('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'register']);
