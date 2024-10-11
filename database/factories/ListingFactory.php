@@ -17,7 +17,20 @@ class ListingFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => fake()->numberBetween(1, 10),
+            'title' => fake()->jobTitle(),
+            'description' => fake()->paragraph(),
+            'image' => fake()->imageUrl(),
+            'salary' => fake()->numberBetween(1000, 9000),
+            'tags' => fake()->words(3, true),
+            'company' => fake()->company(),
+            'address' => fake()->address(),
+            'email' => fake()->unique()->safeEmail(),
+            'city' => fake()->city(),
+            'state' => fake()->state(),
+            'phone' => fake()->phoneNumber(),
+            'requirements' => fake()->paragraph(),
+            'benefits' => fake()->paragraph()
         ];
     }
 }

@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->longText('description');
+            $table->string('image');
+            $table->string('salary');
+            $table->string('tags');
+            $table->string('company');
+            $table->string('address');
+            $table->string('email');
+            $table->string('city');
+            $table->string('state');
+            $table->string('phone');
+            $table->longText('requirements');
+            $table->longText('benefits');
             $table->timestamps();
         });
     }
