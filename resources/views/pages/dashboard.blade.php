@@ -7,7 +7,7 @@
             </h3>
             <form
                 method="POST"
-                action="/listings"
+                action="/Jobs"
                 enctype="multipart/form-data"
             >
                 <div class="mb-4">
@@ -43,12 +43,12 @@
             </form>
         </div>
 
-        <!-- My Job Listings -->
+        <!-- My Jobs -->
         <div class="bg-white p-8 rounded-lg shadow-md w-full">
             <h3 class="text-3xl text-center font-bold mb-4">
-                My Job Listings
+                My Job Jobs
             </h3>
-            <!-- Listing 1 -->
+            <!-- Job 1 -->
             <div
                 class="flex justify-between items-center border-b-2 border-gray-200 py-2"
             >
@@ -74,7 +74,7 @@
                     </form>
                 </div>
             </div>
-            <!-- Listing 2 -->
+            <!-- Job 2 -->
             <div
                 class="flex justify-between items-center border-b-2 border-gray-200 py-2"
             >
@@ -98,7 +98,7 @@
                     </form>
                 </div>
             </div>
-            <!-- Listing 3 -->
+            <!-- Job 3 -->
             <div
                 class="flex justify-between items-center border-b-2 border-gray-200 py-2"
             >

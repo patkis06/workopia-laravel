@@ -5,7 +5,7 @@
   Saved Jobs
 </h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-  <!-- Saved Job Listing 1 -->
+  <!-- Saved Job 1 -->
   <div class="rounded-lg shadow-md bg-white p-4">
       <div class="flex items-center space-between gap-4">
           <img
@@ -46,7 +46,7 @@
       </a>
   </div>
 
-  <!-- Saved Job Listing 2 -->
+  <!-- Saved Job 2 -->
   <div class="rounded-lg shadow-md bg-white p-4">
       <div class="flex items-center space-between gap-4">
           <img

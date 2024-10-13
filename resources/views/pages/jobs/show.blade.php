@@ -9,7 +9,7 @@
                     href="/jobs.html"
                 >
                     <i class="fa fa-arrow-alt-circle-left"></i>
-                    Back To Listings
+                    Back To Jobs
                 </a>
                 <div class="flex space-x-3 ml-4">
                     <a
@@ -132,7 +132,7 @@
             href=""
             class="mt-10 bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
             ><i class="fas fa-bookmark mr-3"></i> Bookmark
-            Listing</a
+            Job</a
         >
     </aside>
 </div>

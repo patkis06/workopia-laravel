@@ -1,6 +1,6 @@
 <x-layout>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-    <!-- Job Listing 1 -->
+    <!-- Job 1 -->
     <div class="rounded-lg shadow-md bg-white p-4">
         <div class="flex items-center space-between gap-4">
             <img
@@ -43,7 +43,7 @@
         </a>
     </div>
 
-    <!-- Job Listing 2 -->
+    <!-- Job 2 -->
     <div class="rounded-lg shadow-md bg-white p-4">
         <div class="flex items-center space-between gap-4">
             <img
@@ -84,7 +84,7 @@
         </a>
     </div>
 
-    <!-- Job Listing 3 -->
+    <!-- Job 3 -->
     <div class="rounded-lg shadow-md bg-white p-4">
         <div class="flex items-center space-between gap-4">
             <img
@@ -124,7 +124,7 @@
         </a>
     </div>
 
-    <!-- Job Listing 4 -->
+    <!-- Job 4 -->
     <div class="rounded-lg shadow-md bg-white p-4">
         <div class="flex items-center space-between gap-4">
             <img
@@ -164,7 +164,7 @@
         </a>
     </div>
 
-    <!-- Job Listing 5 -->
+    <!-- Job 5 -->
     <div class="rounded-lg shadow-md bg-white p-4">
         <div class="flex items-center space-between gap-4">
             <img
@@ -207,7 +207,7 @@
         </a>
     </div>
 
-    <!-- Job Listing 6 -->
+    <!-- Job 6 -->
     <div class="rounded-lg shadow-md bg-white p-4">
         <div class="flex items-center space-between gap-4">
             <img
@@ -250,7 +250,7 @@
         </a>
     </div>
 
-    <!-- Job Listing 7 -->
+    <!-- Job 7 -->
     <div class="rounded-lg shadow-md bg-white p-4">
         <div class="flex items-center space-between gap-4">
             <img
