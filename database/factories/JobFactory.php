@@ -30,13 +30,13 @@ class JobFactory extends Factory
             'address' => fake()->streetAddress(),
             'city' => fake()->city(),
             'state' => fake()->state(),
-            'zip' => fake()->postcode(),
-            'email' => fake()->unique()->safeEmail(),
-            'phone' => fake()->phoneNumber(),
-            'company' => fake()->company(),
+            'zipcode' => fake()->postcode(),
+            'contact_email' => fake()->unique()->safeEmail(),
+            'contact_phone' => fake()->phoneNumber(),
+            'company_name' => fake()->company(),
             'company_description' => fake()->paragraph(2, true),
-            'logo' => fake()->imageUrl(100, 100, 'business', true, 'logo'),
-            'website' => fake()->url(),
+            'company_logo' => fake()->imageUrl(100, 100, 'business', true, 'logo'),
+            'company_website' => fake()->url(),
         ];
     }
 }

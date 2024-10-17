@@ -24,12 +24,12 @@ class Job extends Model
         'address',
         'city',
         'state',
-        'zip',
-        'email',
-        'phone',
-        'company',
+        'zipcode',
+        'contact_email',
+        'contact_phone',
+        'company_name',
         'company_description',
-        'logo',
-        'website',
+        'company_logo',
+        'company_website',
     ];
 }
