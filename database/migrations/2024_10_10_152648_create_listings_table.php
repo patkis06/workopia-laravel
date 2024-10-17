@@ -25,13 +25,13 @@ return new class extends Migration
             $table->string('address')->nullable()->default(null);
             $table->string('city')->nullable()->default(null);
             $table->string('state')->nullable()->default(null);
-            $table->string('zip')->nullable()->default(null);
-            $table->string('email')->nullable()->default(null);
-            $table->string('phone')->nullable()->default(null);
-            $table->string('company')->nullable()->default(null);
+            $table->string('zipcode')->nullable()->default(null);
+            $table->string('contact_email')->nullable()->default(null);
+            $table->string('contact_phone')->nullable()->default(null);
+            $table->string('company_name')->nullable()->default(null);
             $table->string('company_description')->nullable()->default(null);
-            $table->string('logo')->nullable()->default(null);
-            $table->string('website')->nullable()->default(null);
+            $table->string('company_logo')->nullable()->default(null);
+            $table->string('company_website')->nullable()->default(null);
             $table->timestamps();
         });
     }
