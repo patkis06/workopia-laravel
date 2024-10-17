@@ -33,9 +33,9 @@ class JobController extends Controller
         return view('pages.jobs.saved');
     }
 
-    public function edit($id)
+    public function edit(Job $job)
     {
-        return view('pages.jobs.edit');
+        return view('pages.jobs.edit', compact('job'));
     }
 
     public function update(Request $request, $id)

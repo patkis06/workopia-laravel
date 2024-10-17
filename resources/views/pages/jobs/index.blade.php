@@ -1,7 +1,6 @@
 <x-layout>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
     @foreach ($jobs as $job)
-    <!-- Job 1 -->
     <div class="rounded-lg shadow-md bg-white p-4">
         <div class="flex items-center space-between gap-4">
             <img
