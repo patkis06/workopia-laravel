@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $jobs = Job::all();
+        $jobs = Job::limit(10)->get();
         return view('pages.home', compact('jobs'));
     }
 }
