@@ -23,9 +23,9 @@ class JobController extends Controller
         return redirect()->route('jobs.index');
     }
 
-    public function show()
+    public function show(Job $job)
     {
-        return view('pages.jobs.show');
+        return view('pages.jobs.show', compact('job'));
     }
 
     public function saved()

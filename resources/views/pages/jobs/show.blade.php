@@ -6,7 +6,7 @@
             <div class="flex justify-between items-center">
                 <a
                     class="block p-4 text-blue-700"
-                    href="/jobs.html"
+                    href="/jobs"
                 >
                     <i class="fa fa-arrow-alt-circle-left"></i>
                     Back To Jobs
@@ -31,37 +31,27 @@
             </div>
             <div class="p-4">
                 <h2 class="text-xl font-semibold">
-                    Software Engineer
+                    {{ $job->title }}
                 </h2>
                 <p class="text-gray-700 text-lg mt-2">
-                    As a Software Engineer at Algorix, you will be
-                    responsible for designing, developing, and
-                    maintaining high-quality software applications.
-                    You will work closely with cross-functional
-                    teams to deliver scalable and efficient
-                    solutions that meet business needs. The role
-                    involves writing clean, maintainable code,
-                    participating in code reviews, and staying
-                    current with industry trends to ensure our
-                    technology stack remains cutting-edge.
+                    {{ $job->description }}
                 </p>
                 <ul class="my-4 bg-gray-100 p-4">
                     <li class="mb-2">
-                        <strong>Job Type:</strong> Full Time
+                        <strong>Job Type:</strong> {{ $job->job_type }}
                     </li>
                     <li class="mb-2">
-                        <strong>Remote:</strong> No
+                        <strong>Remote:</strong> {{ format_remote($job->remote) }}
                     </li>
                     <li class="mb-2">
-                        <strong>Salary:</strong> $80,000
+                        <strong>Salary:</strong> {{ format_salary($job->salary) }}
                     </li>
                     <li class="mb-2">
-                        <strong>Site Location:</strong> New York, NY
+                        <strong>Site Location:</strong> {{ $job->city }}, {{ $job->state }}
                     </li>
                     <li class="mb-2">
                         <strong>Tags:</strong>
-                        <span>Development</span>,
-                        <span>Coding</span>
+                        {{ format_tags($job->tags) }}
                     </li>
                 </ul>
             </div>
@@ -76,9 +66,7 @@
                     Job Requirements
                 </h3>
                 <p>
-                    Bachelors degree in Computer Science or related
-                    field, 3+ years of software development
-                    experience
+                    {{ $job->requirements }}
                 </p>
                 <h3
                     class="text-lg font-semibold mt-4 mb-2 text-blue-500"
@@ -86,7 +74,7 @@
                     Benefits
                 </h3>
                 <p>
-                    Healthcare, 401(k) matching, flexible work hours
+                    {{ $job->benefits }}
                 </p>
             </div>
             <p class="my-5">
@@ -94,7 +82,7 @@
                 and attach your resume.
             </p>
             <a
-                href="mailto:manager@company.com"
+                href="mailto:{{ $job->contact_email }}"
                 class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-100 hover:bg-indigo-200"
             >
                 Apply Now
@@ -112,17 +100,16 @@
             Company Info
         </h3>
         <img
-            src="/images/logos/logo-algorix.png"
-            alt="Ad"
+            src="/images/{{ $job->company_logo }}"
+            alt="{{ $job->company_name }}"
             class="w-full rounded-lg mb-4 m-auto"
         />
-        <h4 class="text-lg font-bold">Algorix</h4>
+        <h4 class="text-lg font-bold">{{ $job->company_name  }} </h4>
         <p class="text-gray-700 text-lg my-3">
-            We are a leading software development company in New
-            York.
+            {{ limit_description($job->company_description) }}
         </p>
         <a
-            href="https://sparkle.test"
+            href="{{ $job->company_website }}"
             target="_blank"
             class="text-blue-500"
             >Visit Website</a

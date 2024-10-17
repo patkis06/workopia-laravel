@@ -57,3 +57,16 @@ if (!function_exists('limit_description')) {
     return Str::words($description, '25');
   }
 }
+
+if (!function_exists('format_remote')) {
+  /**
+   * Format job remote.
+   *
+   * @param string $remote
+   * @return string
+   */
+  function format_remote($remote)
+  {
+    return $remote ? 'Yes' : 'No';
+  }
+}

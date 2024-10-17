@@ -12,7 +12,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('jobs', [JobController::class, 'index']);
-Route::get('jobs/show', [JobController::class, 'show']);
+Route::get('jobs/{job}', [JobController::class, 'show']);
 Route::get('jobs/saved', [JobController::class, 'saved']);
 Route::get('jobs/create', [JobController::class, 'create']);
 Route::get('jobs/edit', [JobController::class, 'edit']);
