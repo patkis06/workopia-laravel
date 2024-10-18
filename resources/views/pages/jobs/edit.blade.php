@@ -7,9 +7,11 @@
   </h2>
   <form
       method="POST"
-      action="/jobs"
+      action="/jobs/{{ $job->id }}/update"
       enctype="multipart/form-data"
   >
+        @csrf
+        @method('PUT')
       <h2
           class="text-2xl font-bold mb-6 text-center text-gray-500"
       >
@@ -17,6 +19,8 @@
       </h2>
 
       <div class="mb-4">
+        @csrf
+
           <label class="block text-gray-700" for="title"
               >Job Title</label
           >
@@ -126,8 +130,8 @@
               name="remote"
               class="w-full px-4 py-2 border rounded focus:outline-none"
           >
-              <option value="false" {{ (!$job->remote) ? 'selected' : '' }}>No</option>
-              <option value="true" {{ ($job->remote) ? 'selected' : '' }}>Yes</option>
+              <option value="0" {{ (!$job->remote) ? 'selected' : '' }}>No</option>
+              <option value="1" {{ ($job->remote) ? 'selected' : '' }}>Yes</option>
           </select>
       </div>
 
