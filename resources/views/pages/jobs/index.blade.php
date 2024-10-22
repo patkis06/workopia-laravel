@@ -4,10 +4,7 @@
     </h2>
     @if (!empty($jobs))
         <x-job-cards :jobs="$jobs" />
-        <!-- Pagination -->
-        <div class="flex justify-center mt-6">
-            {{ $jobs->links() }}
-        </div>
+        <x-pagination :items="$jobs" />
     @else
         <x-job-empty />
     @endif
