@@ -1,0 +1,1 @@
+<p class="text-center text-xl my-6">No jobs found</p>

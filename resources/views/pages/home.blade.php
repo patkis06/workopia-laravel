@@ -11,10 +11,10 @@
     @if (!empty($jobs))
         <x-job-cards :jobs="$jobs" />
     @else
-        <p class="text-center text-xl my-6">No jobs found</p>
+        <x-job-empty />
     @endif
 
     <a href="jobs" class="block text-xl text-center">
-    <i class="fa fa-arrow-alt-circle-right"></i> Show All Jobs
+        <i class="fa fa-arrow-alt-circle-right"></i> Show All Jobs
     </a>
 </x-layout> 

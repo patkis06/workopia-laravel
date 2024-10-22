@@ -4,11 +4,11 @@
     </h2>
     @if (!empty($jobs))
         <x-job-cards :jobs="$jobs" />
+        <!-- Pagination -->
+        <div class="flex justify-center mt-6">
+            {{ $jobs->links() }}
+        </div>
     @else
-        <p class="text-center text-xl my-6">No jobs found</p>
+        <x-job-empty />
     @endif
-    <!-- Pagination -->
-    <div class="flex justify-center mt-6">
-        {{ $jobs->links() }}
-    </div>
 </x-layout> 
