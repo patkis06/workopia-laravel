@@ -18,16 +18,20 @@
                         >Edit</a
                     >
                     <!-- Delete Form -->
-                    <form method="POST" action="/jobs/{{ $job->id }}/delete">
-                        @csrf
-                        @method('DELETE')
-                        <button
-                            type="submit"
-                            class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
-                        >
-                            Delete
-                        </button>
-                    </form>
+                    <div x-data="{ openDeleteConfirmation: false }">
+                        <form x-ref="deleteForm" method="POST" action="/jobs/{{ $job->id }}/delete" @submit.prevent="openDeleteConfirmation = true">
+                            @csrf
+                            @method('DELETE')
+                            <button
+                                type="submit"
+                                class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                            >
+                                Delete
+                            </button>
+                        </form>
+
+                        <x-delete-confirmation/>
+                    </div>
                     <!-- End Delete Form -->
                 </div>
             </div>
