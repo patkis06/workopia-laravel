@@ -10,7 +10,7 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::paginate(5);
+        $jobs = Job::paginate(6);
         return view('pages.jobs.index', compact('jobs'));
     }
 
@@ -19,7 +19,7 @@ class JobController extends Controller
         return view('pages.jobs.create');
     }
 
-    public function store(Job $job, Request $request)
+    public function store(Request $request)
     {
         $data = $request->validate([
             'title' => 'required|string|max:255',
@@ -62,7 +62,8 @@ class JobController extends Controller
 
     public function saved()
     {
-        return view('pages.jobs.saved');
+        $jobs = Job::where('user_id', 1)->paginate(6);
+        return view('pages.jobs.saved', compact('jobs'));
     }
 
     public function edit(Job $job)
