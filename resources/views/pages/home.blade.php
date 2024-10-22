@@ -7,9 +7,9 @@
     @endif
 
     @if (!empty($jobs))
-        <x-job-cards :jobs="$jobs" />
+        <x-job.container :jobs="$jobs" />
     @else
-        <x-job-empty />
+        <x-job.empty />
     @endif
 
     <a href="jobs" class="block text-xl text-center">

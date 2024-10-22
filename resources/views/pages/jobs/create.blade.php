@@ -4,7 +4,7 @@
 
         <form method="POST" action="/jobs" enctype="multipart/form-data">
             @csrf
-            <x-job-heading>Job Info</x-job-heading>
+            <x-job.heading>Job Info</x-job.heading>
 
             <x-input.text label="Job Title" name="title" placeholder="Software Developer" value="{{ old('title') }}" />
 
@@ -30,7 +30,7 @@
 
             <x-input.text label="ZIP Code" name="zipcode" placeholder="12201" value="{{ old('zipcode') }}" />
 
-            <x-job-heading>Company Info</x-job-heading>
+            <x-job.heading>Company Info</x-job.heading>
 
             <x-input.text label="Company Name" name="company_name" placeholder="Company name" value="{{ old('company_name') }}" />
 
