@@ -16,24 +16,9 @@
           Job Info
       </h2>
 
-      <x-input.text label="Title" name="title" placeholder="Software Developer" value="{{ old('title') }}" />
+        <x-input.text label="Job Title" name="title" placeholder="Software Developer" value="{{ old('title') }}" />
 
-      <div class="mb-4">
-          <label class="block text-gray-700" for="description"
-              >Job Description</label
-          >
-          <textarea
-              cols="30"
-              rows="7"
-              id="description"
-              name="description"
-              class="w-full px-4 py-2 border rounded focus:outline-none"
-              placeholder="We are seeking a skilled and motivated Software Developer to join our growing development team..."
-          >{{ old('description') }}</textarea>
-          @error('description')
-              <p class="text-red-500">{{ $message }}</p>
-          @enderror
-      </div>
+        <x-input.textarea label="Job Description" name="description" placeholder="We are seeking a skilled and motivated Software Developer to join our growing development team..." value="{{ old('description') }}" />
 
       <div class="mb-4">
           <label class="block text-gray-700" for="salary"
