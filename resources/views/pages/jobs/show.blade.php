@@ -18,7 +18,7 @@
                         >Edit</a
                     >
                     <!-- Delete Form -->
-                    <form method="POST">
+                    <form method="POST" action="/jobs/{{ $job->id }}/delete">
                         @csrf
                         @method('DELETE')
                         <button

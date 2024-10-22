@@ -44,16 +44,12 @@ class JobController extends Controller
 
         $data['user_id'] = 1;
 
-        // Check for image
         if ($request->hasFile('company_logo')) {
-            // Store the file and get path
             $path = $request->file('company_logo')->store('logos', 'public');
 
-            // Add path to validated data
             $data['company_logo'] = $path;
         }
 
-        // Submit to database
         Job::create($data);
 
         return redirect()->route('jobs.index')->with('success', 'Job listing created successfully!');
@@ -97,26 +93,27 @@ class JobController extends Controller
             'company_website' => 'nullable|url'
         ]);
 
-        // Check for image
         if ($request->hasFile('company_logo')) {
-            // Delete old logo
             Storage::delete('public/logos/' . basename($job->company_logo));
 
-            // Store the file and get path
             $path = $request->file('company_logo')->store('logos', 'public');
 
-            // Add path to validated data
             $data['company_logo'] = $path;
         }
 
-        // Update job
         $job->update($data);
 
         return redirect()->route('jobs.show', ['job' => $job->id])->with('success', 'Job listing updated successfully!');
     }
 
-    public function destroy($id)
+    public function destroy(Job $job)
     {
-        return redirect()->route('jobs.index');
+        if ($job->company_logo) {
+            Storage::delete('public/logos/' . $job->company_logo);
+        }
+
+        $job->delete();
+
+        return redirect()->route('jobs.index')->with('success', 'Job listing deleted successfully!');
     }
 }
