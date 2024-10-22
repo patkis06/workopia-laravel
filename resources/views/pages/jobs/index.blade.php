@@ -5,7 +5,7 @@
         <div class="flex items-center space-between gap-4">
             <img
                 src="/images/{{ $job->company_logo }}"
-                alt=""
+                alt="{{ $job->company_name }}"
                 class="w-14"
             />
             <div>
