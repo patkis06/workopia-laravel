@@ -117,4 +117,33 @@ class JobController extends Controller
 
         return redirect()->route('jobs.index')->with('success', 'Job listing deleted successfully!');
     }
+
+    public function search(Request $request)
+    {
+        $data = $request->validate([
+            'keywords' => 'nullable|string',
+            'location' => 'nullable|string'
+        ]);
+
+        $query = Job::query();
+
+        if ($data['keywords']) {
+            $query->where('title', 'like', '%' . $data['keywords'] . '%')
+                ->orWhere('description', 'like', '%' . $data['keywords'] . '%')
+                ->orWhere('tags', 'like', '%' . $data['keywords'] . '%')
+                ->orWhere('requirements', 'like', '%' . $data['keywords'] . '%')
+                ->orWhere('benefits', 'like', '%' . $data['keywords'] . '%')
+                ->orWhere('company_name', 'like', '%' . $data['keywords'] . '%');
+        }
+
+        if ($data['location']) {
+            $query->where('city', 'like', '%' . $data['location'] . '%')
+                ->orWhere('state', 'like', '%' . $data['location'] . '%')
+                ->orWhere('zipcode', 'like', '%' . $data['location'] . '%');
+        }
+
+        $jobs = $query->paginate(6);
+
+        return view('pages.jobs.index', compact('jobs'));
+    }
 }

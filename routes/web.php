@@ -18,6 +18,7 @@ Route::get('jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 Route::get('jobs/{job}/edit', [JobController::class, 'edit'])->name('jobs.edit');
 
 Route::post('jobs', [JobController::class, 'store']);
+Route::post('jobs/search', [JobController::class, 'search']);
 
 Route::put('jobs/{job}/update', [JobController::class, 'update']);
 
