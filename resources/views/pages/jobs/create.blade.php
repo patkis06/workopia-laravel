@@ -56,21 +56,7 @@
       
       <x-input.text label="Contact Email" name="contact_email" placeholder="Email where you want to receive applications" value="{{ old('contact_email') }}" />
 
-      <div class="mb-4">
-          <label class="block text-gray-700" for="company_logo"
-              >Company Logo</label
-          >
-          <input
-              id="company_logo"
-              type="file"
-              name="company_logo"
-              value="{{ old('company_logo') }}"
-              class="w-full px-4 py-2 border rounded focus:outline-none"
-          />
-          @error('company_logo')
-              <p class="text-red-500">{{ $message }}</p>
-          @enderror
-      </div>
+      <x-input.image label="Company Logo" name="company_logo" value="{{ old('company_logo') }}" />
 
       <x-input.submit />
   </form>
