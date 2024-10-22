@@ -21,18 +21,10 @@
 
         @vite('resources/js/app.js')
 
-        <script>
-            document.addEventListener("alpine:init", () => {
-                Alpine.store("menu", {
-                    open: false,
-                    toggle() {
-                        this.open = !this.open;
-                    },
-                    close() {
-                        this.open = false;
-                    },
-                });
-            });
-        </script>
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
     </body>
 </html>

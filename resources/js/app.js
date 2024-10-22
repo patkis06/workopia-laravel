@@ -1,10 +1,7 @@
 import "./bootstrap";
-
 import Alpine from "alpinejs";
 
 window.Alpine = Alpine;
-
-Alpine.start();
 
 Alpine.store("menu", {
     open: false,
@@ -15,3 +12,5 @@ Alpine.store("menu", {
         this.open = false;
     },
 });
+
+Alpine.start();
