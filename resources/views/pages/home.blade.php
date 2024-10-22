@@ -1,7 +1,5 @@
 <x-layout>
-    <h2 class="text-center text-3xl mb-4 font-bold border border-gray-300 p-3">
-        Recent Jobs
-    </h2>
+    <x-page-title>Recent Jobs</x-page-title>
     @if (session('message'))
     <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 text-center mb-6" role="alert">
         {{ session('message') }}

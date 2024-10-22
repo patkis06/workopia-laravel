@@ -1,7 +1,5 @@
 <x-layout>
-    <h2 class="text-center text-3xl mb-4 font-bold border border-gray-300 p-3">
-        Saved Jobs
-    </h2>
+    <x-page-title>Saved Jobs</x-page-title>
     @if (!empty($jobs))
         <x-job-cards :jobs="$jobs" />
         <x-pagination :items="$jobs" />
