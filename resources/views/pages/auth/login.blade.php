@@ -4,14 +4,8 @@
 >
   <h2 class="text-4xl text-center font-bold mb-4">Login</h2>
   <form>
-      <div class="mb-4">
-          <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              class="w-full px-4 py-2 border rounded focus:outline-none"
-          />
-      </div>
+      <x-input.text name="email" placeholder="Email Address" value="{{ old('email') }}" />
+
       <div class="mb-4">
           <input
               type="password"

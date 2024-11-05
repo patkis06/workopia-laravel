@@ -1,9 +1,11 @@
-@props(['label', 'name', 'type' => 'text', 'placeholder' => '', 'value' => ''])
+@props(['label' => null, 'name', 'type' => 'text', 'placeholder' => '', 'value' => ''])
 
 <div class="mb-4">
-  <label class="block text-gray-700" for="title"
-      >{{ $label }}</label
-  >
+  @if ($label)
+      <label class="block text-gray-700" for="{{ $name }}"
+          >{{ $label }}</label
+      >
+  @endif
   <input
       id="{{ $name }}"
       type="{{ $type }}"
