@@ -24,6 +24,9 @@ Route::put('jobs/{job}/update', [JobController::class, 'update']);
 
 Route::delete('jobs/{job}/delete', [JobController::class, 'destroy']);
 
-Route::get('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'register']);
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+
+Route::post('/login', [AuthController::class, 'authozize'])->name('authozize');
+Route::post('/register', [AuthController::class, 'store'])->name('register.store');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
