@@ -5,21 +5,8 @@
   <h2 class="text-4xl text-center font-bold mb-4">Login</h2>
   <form>
       <x-input.text name="email" placeholder="Email Address" value="{{ old('email') }}" />
-
-      <div class="mb-4">
-          <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              class="w-full px-4 py-2 border rounded focus:outline-none"
-          />
-      </div>
-      <button
-          type="submit"
-          class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded focus:outline-none"
-      >
-          Login
-      </button>
+      <x-input.text type="password" name="password" placeholder="Password" value="{{ old('password') }}" />
+      <x-input.submit value="Login" />
 
       <p class="mt-4 text-gray-500">
           Don't have an account?
