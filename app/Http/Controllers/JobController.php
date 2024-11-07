@@ -61,8 +61,6 @@ class JobController extends Controller
 
     public function show(Job $job)
     {
-        $this->authorize('update', $job);
-
         return view('pages.jobs.show', compact('job'));
     }
 
