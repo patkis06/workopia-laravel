@@ -5,11 +5,11 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
-});
+})->name('dashboard');
 
 Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
 Route::get('jobs/create', [JobController::class, 'create'])->name('jobs.create');
@@ -29,4 +29,4 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 
 Route::post('/login', [AuthController::class, 'authozize'])->name('authozize');
 Route::post('/register', [AuthController::class, 'store'])->name('register.store');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
