@@ -22,10 +22,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'patrik.kiss@bluedrm.com',
         ]);
 
+        User::factory()->create([
+            'name' => 'Example Example',
+            'email' => 'example@example.com',
+        ]);
+
         $data = include 'data.php';
 
-        foreach ($data as $row) {
-            $row['user_id'] = 1;
+        foreach ($data as $key => $row) {
+            if ($key < 2) {
+                $row['user_id'] = 1;
+            } else {
+                $row['user_id'] = 2;
+            }
+
             Job::create($row);
         }
     }
