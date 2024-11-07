@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class JobController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index()
     {
         $jobs = Job::paginate(6);
@@ -57,22 +61,28 @@ class JobController extends Controller
 
     public function show(Job $job)
     {
+        $this->authorize('update', $job);
+
         return view('pages.jobs.show', compact('job'));
     }
 
     public function saved()
     {
-        $jobs = Job::where('user_id', 1)->paginate(6);
+        $jobs = Job::where('user_id', Auth::id())->paginate(6);
         return view('pages.jobs.saved', compact('jobs'));
     }
 
     public function edit(Job $job)
     {
+        $this->authorize('update', $job);
+
         return view('pages.jobs.edit', compact('job'));
     }
 
     public function update(Job $job, Request $request)
     {
+        $this->authorize('update', $job);
+
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -109,6 +119,8 @@ class JobController extends Controller
 
     public function destroy(Job $job)
     {
+        $this->authorize('delete', $job);
+
         if ($job->company_logo) {
             Storage::delete('public/logos/' . $job->company_logo);
         }

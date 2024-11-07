@@ -12,26 +12,33 @@
                     Back To Jobs
                 </a>
                 <div class="flex space-x-3 ml-4">
-                    <a
-                        href="{{ route('jobs.edit', $job->id) }}"
-                        class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
-                        >Edit</a
-                    >
-                    <!-- Delete Form -->
-                    <div x-data="{ openDeleteConfirmation: false }">
-                        <form x-ref="deleteForm" method="POST" action="/jobs/{{ $job->id }}/delete" @submit.prevent="openDeleteConfirmation = true">
-                            @csrf
-                            @method('DELETE')
-                            <button
-                                type="submit"
-                                class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
-                            >
-                                Delete
-                            </button>
-                        </form>
+                    <!-- Edit Form -->
+                    @can('update', $job)
+                        <a
+                            href="{{ route('jobs.edit', $job->id) }}"
+                            class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+                            >Edit</a
+                        >
+                    @endcan
+                    <!-- EndEdit Form -->
 
-                        <x-delete-confirmation/>
-                    </div>
+                    <!-- Delete Form -->
+                    @can('delete', $job)
+                        <div x-data="{ openDeleteConfirmation: false }">
+                            <form x-ref="deleteForm" method="POST" action="/jobs/{{ $job->id }}/delete" @submit.prevent="openDeleteConfirmation = true">
+                                @csrf
+                                @method('DELETE')
+                                <button
+                                    type="submit"
+                                    class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                                >
+                                    Delete
+                                </button>
+                            </form>
+
+                            <x-delete-confirmation/>
+                        </div>
+                    @endcan
                     <!-- End Delete Form -->
                 </div>
             </div>
