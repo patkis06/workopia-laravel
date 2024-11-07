@@ -11,7 +11,7 @@
 
       <p class="mt-4 text-gray-500">
           Don't have an account?
-          <a class="text-blue-900" href="register.html"
+          <a class="text-blue-900" href="{{ route('register') }}"
               >Register</a
           >
       </p>
