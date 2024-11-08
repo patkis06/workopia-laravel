@@ -10,38 +10,27 @@ class UserController extends Controller
 {
     public function update(User $user, Request $request)
     {
-        dd($user);
         $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'salary' => 'required|integer',
-            'tags' => 'nullable|string',
-            'job_type' => 'required|string',
-            'remote' => 'required|boolean',
-            'requirements' => 'nullable|string',
-            'benefits' => 'nullable|string',
-            'address' => 'nullable|string',
-            'city' => 'required|string',
-            'state' => 'required|string',
-            'zipcode' => 'nullable|string',
-            'contact_email' => 'required|string',
-            'contact_phone' => 'nullable|string',
-            'company_name' => 'required|string',
-            'company_description' => 'nullable|string',
-            'company_logo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
-            'company_website' => 'nullable|url'
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'avatar' => 'nullable|image',
         ]);
 
-        if ($request->hasFile('company_logo')) {
-            Storage::delete('public/logos/' . basename($job->company_logo));
+        $user->name = $data['name'];
+        $user->email = $data['email'];
 
-            $path = $request->file('company_logo')->store('logos', 'public');
+        if ($request->hasFile('avatar')) {
+            if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+                Storage::disk('public')->delete($user->avatar);
+            }
 
-            $data['company_logo'] = $path;
+            $path = $request->file('avatar')->store('avatar', 'public');
+
+            $user->avatar = $path;
         }
 
-        $user->update($data);
+        $user->save();
 
-        return redirect()->route('jobs.show', ['job' => $job->id])->with('success', 'Job listing updated successfully!');
+        return redirect()->route('dashboard')->with('success', 'User updated successfully!');
     }
 }

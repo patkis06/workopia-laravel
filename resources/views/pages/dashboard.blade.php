@@ -12,9 +12,16 @@
             >
                 @csrf
                 @method('PUT')
-                <x-input.text label="Name" name="Name" value="{{$user->name}}" />
-                <x-input.text label="Email" name="email" value="{{$user->email}}" />
-                <x-input.image label="Avatar" name="avartar" value="{{ old('company_logo') }}" />
+                <div class="mt-2 flex justify-center">
+                @if ($user->avatar)
+                    <img src="{{asset('storage/' . $user->avatar)}}" alt="{{$user->name}}" class="w-24 h-24 object-cover rounded-full">
+                @else
+                    <img src="{{asset('storage/avatar/avatar_default.png')}}" alt="{{$user->name}}" class="w-24 h-24 object-cover rounded-full">
+                @endif
+                </div>
+                <x-input.text label="Name" name="name" value="{{ $user->name }}" />
+                <x-input.text label="Email" name="email" value="{{ $user->email }}" />
+                <x-input.image label="Avatar" name="avatar" value="{{ $user->avatar }}" />
                 <x-input.submit />
             </form>
         </div>

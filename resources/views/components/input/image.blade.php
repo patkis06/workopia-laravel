@@ -10,6 +10,7 @@
       name="{{ $name }}"
       value="{{ old($name) }}"
       class="w-full px-4 py-2 border rounded focus:outline-none"
+      accept="image/*"
   />
   <x-input.error name="{{ $name }}" />
 </div>
