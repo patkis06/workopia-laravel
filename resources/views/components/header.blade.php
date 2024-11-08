@@ -9,7 +9,7 @@
                 <x-nav-link href="{{url('jobs/saved')}}" :active="request()->is('jobs/saved')">Saved Jobs</x-nav-link>
                 <x-button-link href="{{url('jobs/create')}}" :active="request()->is('jobs/create')" icon="edit">Create Job</x-button-link>
                 <x-nav-link href="{{url('dashboard')}}" :active="request()->is('dashboard')" icon="gauge" >Dashboard</x-nav-link>
-                <img src="{{asset('storage/' . Auth::user()->avatar)}}" alt="{{Auth::user()->name}}" class="w-10 h-10 object-cover rounded-full">
+                <x-avatar src="{{asset('storage/' . Auth::user()->avatar)}}" alt="{{Auth::user()->name}}" width="10" height="10" />
                 <x-logout-button />
             @else
                 <x-nav-link href="{{url('login')}}" :active="request()->is('login')">Login</x-nav-link>

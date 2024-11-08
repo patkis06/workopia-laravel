@@ -14,9 +14,9 @@
                 @method('PUT')
                 <div class="mt-2 flex justify-center">
                 @if ($user->avatar)
-                    <img src="{{asset('storage/' . $user->avatar)}}" alt="{{$user->name}}" class="w-24 h-24 object-cover rounded-full">
+                    <x-avatar src="{{ asset('storage/' . $user->avatar) }}" alt="{{ $user->name }}" />
                 @else
-                    <img src="{{asset('storage/avatar/avatar_default.png')}}" alt="{{$user->name}}" class="w-24 h-24 object-cover rounded-full">
+                    <x-avatar src="{{ asset('storage/avatar/avatar_default.png') }}" alt="{{ $user->name }}" />
                 @endif
                 </div>
                 <x-input.text label="Name" name="name" value="{{ $user->name }}" />
