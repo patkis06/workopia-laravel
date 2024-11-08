@@ -15,7 +15,7 @@
           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm"
           >Edit</a
       >
-      <form method="POST" action="{{ route('jobs.destroy', $job->id) }}">
+      <form method="POST" action="{{ route('jobs.destroy', $job->id) }}?redirect=dashboard">
           @csrf
           @method('DELETE')
           <button

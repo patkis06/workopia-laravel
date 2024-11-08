@@ -115,7 +115,7 @@ class JobController extends Controller
         return redirect()->route('jobs.show', ['job' => $job->id])->with('success', 'Job listing updated successfully!');
     }
 
-    public function destroy(Job $job)
+    public function destroy(Job $job, Request $request)
     {
         $this->authorize('delete', $job);
 
@@ -124,6 +124,10 @@ class JobController extends Controller
         }
 
         $job->delete();
+
+        if ($request->query('redirect')) {
+            return redirect($request->query('redirect'))->with('success', 'Job listing deleted successfully!');
+        }
 
         return redirect()->route('jobs.index')->with('success', 'Job listing deleted successfully!');
     }
