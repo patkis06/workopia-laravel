@@ -38,5 +38,17 @@ class DatabaseSeeder extends Seeder
 
             Job::create($row);
         }
+
+        $bookmark = User::find(1)->bookmarks()->create([
+            'title' => 'Bookmark 1'
+        ]);
+
+        $bookmark->users()->attach(2);
+
+        $bookmark = User::find(2)->bookmarks()->create([
+            'title' => 'Bookmark 2'
+        ]);
+
+        $bookmark->users()->attach(1);
     }
 }

@@ -54,4 +54,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Job::class);
     }
+
+    /**
+     * Get the bookmarks for the user.
+     */
+    public function bookmarks()
+    {
+        return $this->belongsToMany(Bookmark::class, 'bookmark_user');
+    }
 }
