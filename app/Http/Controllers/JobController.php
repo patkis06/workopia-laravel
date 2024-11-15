@@ -66,7 +66,8 @@ class JobController extends Controller
 
     public function saved()
     {
-        $jobs = Job::where('user_id', Auth::id())->paginate(6);
+        $jobs = Auth::user()->bookmarkedJobs()->paginate(6);
+
         return view('pages.jobs.saved', compact('jobs'));
     }
 

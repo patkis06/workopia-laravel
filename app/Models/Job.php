@@ -32,4 +32,16 @@ class Job extends Model
         'company_logo',
         'company_website',
     ];
+
+    // Relation to user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Relation to bookmarks
+    public function bookmarkedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'job_user_bookmarks')->withTimestamps();
+    }
 }
