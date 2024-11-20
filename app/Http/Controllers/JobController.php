@@ -62,7 +62,9 @@ class JobController extends Controller
 
     public function show(Job $job)
     {
-        return view('pages.jobs.show', compact('job'));
+        $bookmarkedJobs = Auth::user()->bookmarkedJobs->pluck('id')->toArray();
+
+        return view('pages.jobs.show', compact('job', 'bookmarkedJobs'));
     }
 
     public function saved()
@@ -161,5 +163,35 @@ class JobController extends Controller
         $jobs = $query->paginate(6);
 
         return view('pages.jobs.index', compact('jobs'));
+    }
+
+    /**
+     * Bookmark a job listing
+     *
+     * @param Job $job
+     * @return RedirectResponse
+     */
+    public function bookmarkJob(Job $job)
+    {
+        $user = User::find(Auth::id());
+
+        $user->bookmarkedJobs()->attach($job->id);
+
+        return redirect()->back()->with('success', 'Job listing saved successfully!');
+    }
+
+    /**
+     * Remove a bookmarked job listing
+     *
+     * @param Job $job
+     * @return RedirectResponse
+     */
+    public function unBookmarkJob(Job $job)
+    {
+        $user = User::find(Auth::id());
+
+        $user->bookmarkedJobs()->detach($job->id);
+
+        return redirect()->back()->with('success', 'Job listing removed successfully!');
     }
 }

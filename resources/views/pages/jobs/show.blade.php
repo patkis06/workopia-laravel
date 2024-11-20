@@ -24,7 +24,7 @@
 
                     <!-- Delete Form -->
                     @can('delete', $job)
-                        <div x-data="{ openDeleteConfirmation: false }">
+                        <div x-cloak x-data="{ openDeleteConfirmation: false }">
                             <form x-ref="deleteForm" method="POST" action="/jobs/{{ $job->id }}/delete" @submit.prevent="openDeleteConfirmation = true">
                                 @csrf
                                 @method('DELETE')
@@ -128,12 +128,38 @@
             >Visit Website</a
         >
 
-        <a
-            href=""
+        {{-- <a
+            href="{{ route('jobs.bookmark', $job->id) }}"
             class="mt-10 bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
             ><i class="fas fa-bookmark mr-3"></i> Bookmark
             Job</a
+        > --}}
+
+        @php
+            $bookmarked = false;
+            if (in_array($job->id, $bookmarkedJobs)) {
+            $bookmarked = true;
+            }   
+        @endphp
+
+        <form 
+            action="{{ route('jobs.bookmark', $job->id) }}" 
+            method="POST"
+            style="display: inline;"
         >
+            @csrf
+            @if (!$bookmarked)
+                <button type="submit" class="mt-10 bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
+                    <i class="fas fa-bookmark mr-3"></i> Bookmark Job
+                </button>
+            @else
+                @method('DELETE')
+                <button type="submit" class="mt-10 bg-red-500 hover:bg-red-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
+                    <i class="fas fa-bookmark mr-3"></i> Unbookmark Job
+                </button>
+            @endif
+                           
+        </form>
     </aside>
 </div>
 </x-layout> 

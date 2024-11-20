@@ -26,6 +26,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('jobs/{job}/delete', [JobController::class, 'destroy'])->name('jobs.destroy');
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::post('jobs/{job}/bookmark', [JobController::class, 'bookmarkJob'])->name('jobs.bookmark');
+    Route::delete('jobs/{job}/bookmark', [JobController::class, 'unBookmarkJob'])->name('jobs.bookmark');
 });
 
 Route::middleware('guest')->group(function () {
