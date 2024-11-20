@@ -1,4 +1,7 @@
 <x-layout :exclude="['hero', 'bottom-banner', 'top-banner']">
+  
+  <x-message />
+
   <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
     <!-- Job Details Column -->
     <section class="md:col-span-3">

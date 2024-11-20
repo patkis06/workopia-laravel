@@ -5,6 +5,7 @@
   <h2 class="text-4xl text-center font-bold mb-4">
       Edit Job
   </h2>
+
   <form
       method="POST"
       action="/jobs/{{ $job->id }}/update"

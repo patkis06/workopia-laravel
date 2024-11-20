@@ -1,4 +1,5 @@
 <x-layout>
+    <x-message />
     <section class="flex flex-col md:flex-row gap-6">
         <!-- Profile Info -->
         <div class="bg-white p-8 rounded-lg shadow-md w-full md:w-1/2">
@@ -13,11 +14,7 @@
                 @csrf
                 @method('PUT')
                 <div class="mt-2 flex justify-center">
-                @if ($user->avatar)
-                    <x-avatar src="{{ asset('storage/' . $user->avatar) }}" alt="{{ $user->name }}" />
-                @else
-                    <x-avatar src="{{ asset('storage/avatar/avatar_default.png') }}" alt="{{ $user->name }}" />
-                @endif
+                    <x-avatar avatar="{{ $user->avatar }}" alt="{{$user->name}}"/>
                 </div>
                 <x-input.text label="Name" name="name" value="{{ $user->name }}" />
                 <x-input.text label="Email" name="email" value="{{ $user->email }}" />

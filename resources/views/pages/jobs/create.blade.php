@@ -2,6 +2,8 @@
     <div class="bg-white mx-auto p-8 rounded-lg shadow-md w-full md:max-w-3xl">
         <x-page-title>Create Job</x-page-title>
 
+        <x-message />
+
         <form method="POST" action="/jobs" enctype="multipart/form-data">
             @csrf
             <x-job.heading>Job Info</x-job.heading>
