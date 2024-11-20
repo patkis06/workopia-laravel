@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :exclude="['hero', 'bottom-banner', 'top-banner']">
   <div
   class="bg-white mx-auto p-8 rounded-lg shadow-md w-full md:max-w-3xl"
 >
