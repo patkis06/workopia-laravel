@@ -62,7 +62,10 @@ class JobController extends Controller
 
     public function show(Job $job)
     {
-        $bookmarkedJobs = Auth::user()->bookmarkedJobs->pluck('id')->toArray();
+        $bookmarkedJobs = [];
+        if (Auth::check()) {
+            $bookmarkedJobs = Auth::user()->bookmarkedJobs->pluck('id')->toArray();
+        }
 
         return view('pages.jobs.show', compact('job', 'bookmarkedJobs'));
     }

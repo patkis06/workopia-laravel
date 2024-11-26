@@ -9,12 +9,12 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
+Route::get('jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
     Route::get('jobs/create', [JobController::class, 'create'])->name('jobs.create');
     Route::get('jobs/saved', [JobController::class, 'saved'])->name('jobs.saved');
-    Route::get('jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
     Route::get('jobs/{job}/edit', [JobController::class, 'edit'])->name('jobs.edit');
 
     Route::post('jobs', [JobController::class, 'store'])->name('jobs.store');
