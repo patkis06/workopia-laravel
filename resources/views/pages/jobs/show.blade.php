@@ -97,12 +97,33 @@
                 Put "Job Application" as the subject of your email
                 and attach your resume.
             </p>
-            <a
-                href="mailto:{{ $job->contact_email }}"
-                class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-100 hover:bg-indigo-200"
-            >
-                Apply Now
-            </a>
+
+            <div x-cloak x-data="{ openApplicantForm: false }">
+                <button @click="openApplicantForm = true" class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
+                    Apply Now
+                </button>
+
+                <x-applicant-modal title="{{ $job->title }}">
+                    <form method="POST" action="/applicants" enctype="multipart/form-data">
+                        @csrf
+                        
+                        <x-input.text label="Full Name" name="full_name" placeholder="John Doe" value="{{ old('full_name') }}" />
+
+                        <x-input.text label="Contact Phone" name="contact_phone" placeholder="Enter phone" value="{{ old('contact_phone') }}" />
+                
+                        <x-input.text label="Contact Email" name="contact_email" placeholder="Email email" value="{{ old('contact_email') }}" />
+
+                        <x-input.textarea label="Message" name="message" placeholder="Your message" value="{{ old('message') }}" />
+                
+                        <x-input.file label="Resume" name="resume_path" value="{{ old('resume_path') }}" />
+                
+                        <x-input.submit />
+                        <x-input.cancel click="openApplicantForm = false" />
+
+                        </form>
+                </x-applicant-modal>
+            </div>
+
         </div>
 
         <div class="bg-white p-6 rounded-lg shadow-md mt-6">
@@ -130,13 +151,6 @@
             class="text-blue-500"
             >Visit Website</a
         >
-
-        {{-- <a
-            href="{{ route('jobs.bookmark', $job->id) }}"
-            class="mt-10 bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
-            ><i class="fas fa-bookmark mr-3"></i> Bookmark
-            Job</a
-        > --}}
 
         @php
             $bookmarked = false;

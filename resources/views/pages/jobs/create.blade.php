@@ -44,7 +44,7 @@
 
             <x-input.text label="Contact Email" name="contact_email" placeholder="Email where you want to receive applications" value="{{ old('contact_email') }}" />
 
-            <x-input.image label="Company Logo" name="company_logo" value="{{ old('company_logo') }}" />
+            <x-input.file label="Company Logo" name="company_logo" accept="image/*" value="{{ old('company_logo') }}" />
 
             <x-input.submit />
         </form>
