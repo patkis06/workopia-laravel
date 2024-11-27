@@ -100,32 +100,10 @@
                     and attach your resume.
                 </p>
 
-                <div x-cloak x-data="{ openApplicantForm: false }">
-                    <button @click="openApplicantForm = true" class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
+                <div>
+                    <a href="{{ route('applicant.index', $job) }}" class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
                         Apply Now
-                    </button>
-
-                    <x-applicant-modal title="{{ $job->title }}">
-                        <form method="POST" action="/applicants" enctype="multipart/form-data">
-                            @csrf
-                            
-                            <x-input.text label="Full Name" name="full_name" value="{{ old('full_name') }}" />
-
-                            <x-input.text label="Contact Phone" name="contact_phone" value="{{ old('contact_phone') }}" />
-                    
-                            <x-input.text label="Contact Email" name="contact_email" value="{{ old('contact_email') }}" />
-
-                            <x-input.textarea label="Message" name="message" value="{{ old('message') }}" />
-
-                            <x-input.text label="Location" name="location" value="{{ old('contact_email') }}" />
-                    
-                            <x-input.file label="Resume" name="resume_path" value="{{ old('resume_path') }}" />
-                    
-                            <x-input.submit />
-                            <x-input.cancel click="openApplicantForm = false" />
-
-                        </form>
-                    </x-applicant-modal>
+                    </a>
                 </div>
             @endauth
         </div>

@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Models\Applicant;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
@@ -29,6 +31,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('jobs/{job}/bookmark', [JobController::class, 'bookmarkJob'])->name('jobs.bookmark');
     Route::delete('jobs/{job}/bookmark', [JobController::class, 'unBookmarkJob'])->name('jobs.bookmark');
+
+    Route::get('/jobs/{job}/apply', [ApplicantController::class, 'index'])->name('applicant.index');
+    Route::post('/jobs/{job}/apply', [ApplicantController::class, 'store'])->name('applicant.store');
 });
 
 Route::middleware('guest')->group(function () {
