@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Applicant;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicantController extends Controller
 {
@@ -37,5 +39,16 @@ class ApplicantController extends Controller
         Applicant::create($data);
 
         return redirect()->route('applicant.index', ['job' => $job->id])->with('success', 'You have applied to the job!');
+    }
+
+    public function destroy(Applicant $applicant)
+    {
+        if ($applicant->resume_path) {
+            Storage::delete('public/logos/' . $applicant->resume_path);
+        }
+
+        $applicant->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Applicant has been removed!');
     }
 }

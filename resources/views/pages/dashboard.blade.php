@@ -29,10 +29,9 @@
                 My Jobs
             </h3>
             @foreach ($jobs as $job)
-                <x-job.dashboard :job="$job" />   
-            @endforeach
-
-            {{-- Applicants --}}
+                <x-job.dashboard :job="$job" />  
+            
+                {{-- Applicants --}}
             <div class="mt-4 bg-gray-100 p-2">
                 <h4 class="text-lg font-semibold mb-2">Applicants</h4>
                 @forelse($job->applicants as $applicant)
@@ -56,19 +55,28 @@
                             </a>
                         </p>
                         {{-- Delete Applicant --}}
-                        {{-- <form method="POST" action="{{route('applicant.destroy', $applicant->id)}}"
-                            onsubmit="return confirm('Are you sure you want to delete this applicant?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:text-red-700 text-sm">
-                            <i class="fas fa-trash"></i> Delete Applicant
-                            </button>
-                        </form> --}}
+                        <div x-cloak x-data="{ openDeleteConfirmation: false }">
+                            <form id="deleteApplicantForm" x-ref="deleteApplicantForm" method="POST" action="{{route('applicant.destroy', $applicant->id)}}" @submit.prevent="openDeleteConfirmation = true">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 hover:text-red-700 text-sm">
+                                <i class="fas fa-trash"></i> Delete Applicant
+                                </button>
+                            </form>
+
+                            <x-delete-confirmation form="deleteApplicantForm" message="Are you sure you want to delete this application?" />
+                        </div>
+                    
                     </div>      
                 @empty
                     <p class="text-gray-700 mb-5">No applicants for this job</p>
                 @endforelse
             </div>  
+
+
+            @endforeach
+
+            
 
         </div>
     </section>

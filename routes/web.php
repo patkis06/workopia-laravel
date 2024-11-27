@@ -34,6 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/jobs/{job}/apply', [ApplicantController::class, 'index'])->name('applicant.index');
     Route::post('/jobs/{job}/apply', [ApplicantController::class, 'store'])->name('applicant.store');
+    Route::delete('/jobs/{applicant}/destoy', [ApplicantController::class, 'destroy'])->name('applicant.destroy');
 });
 
 Route::middleware('guest')->group(function () {
