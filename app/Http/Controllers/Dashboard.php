@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
 
 class Dashboard extends Controller
@@ -11,7 +10,7 @@ class Dashboard extends Controller
     public function index()
     {
         $user = Auth::user();
-        $jobs = Auth::user()->jobs->take(5)->sortByDesc('created_at');
+        $jobs = Job::where('user_id', $user->id)->with('applicants')->get();
 
         return view('pages.dashboard', compact('user', 'jobs'));
     }
