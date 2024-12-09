@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GeocodeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
 Route::get('jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+Route::get('/geocode', [GeocodeController::class, 'geocode']);
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
