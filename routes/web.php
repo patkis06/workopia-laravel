@@ -7,14 +7,11 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Models\Applicant;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
-Route::get('jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [Dashboard::class, 'index'])->name('dashboard');
     Route::get('jobs/create', [JobController::class, 'create'])->name('jobs.create');
     Route::get('jobs/saved', [JobController::class, 'saved'])->name('jobs.saved');
     Route::get('jobs/{job}/edit', [JobController::class, 'edit'])->name('jobs.edit');
@@ -30,12 +27,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::post('jobs/{job}/bookmark', [JobController::class, 'bookmarkJob'])->name('jobs.bookmark');
-    Route::delete('jobs/{job}/bookmark', [JobController::class, 'unBookmarkJob'])->name('jobs.bookmark');
+    Route::delete('jobs/{job}/bookmark', [JobController::class, 'unBookmarkJob'])->name('jobs.bookmark.delete');
 
     Route::get('/jobs/{job}/apply', [ApplicantController::class, 'index'])->name('applicant.index');
     Route::post('/jobs/{job}/apply', [ApplicantController::class, 'store'])->name('applicant.store');
     Route::delete('/jobs/{applicant}/destoy', [ApplicantController::class, 'destroy'])->name('applicant.destroy');
 });
+
+Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
+Route::get('jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
