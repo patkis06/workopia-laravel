@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApplicantMail;
 use App\Models\Applicant;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class ApplicantController extends Controller
@@ -27,16 +29,18 @@ class ApplicantController extends Controller
             'resume' => 'required|file|mimes:pdf|max:2048',
         ]);
 
-        $data['user_id'] = Auth::id();
-        $data['job_id'] = $job->id;
-
         if ($request->hasFile('resume')) {
             $path = $request->file('resume')->store('resume', 'public');
 
             $data['resume_path'] = $path;
         }
 
-        Applicant::create($data);
+        $application = new Applicant($data);
+        $application->job_id = $job->id;
+        $application->user_id = Auth::id();
+        $application->save();
+
+        Mail::to('patrik.kiss@bluedrm.com')->send(new ApplicantMail($application, $job));
 
         return redirect()->route('applicant.index', ['job' => $job->id])->with('success', 'You have applied to the job!');
     }
