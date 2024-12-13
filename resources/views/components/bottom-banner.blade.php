@@ -3,10 +3,9 @@
         class="bg-blue-800 text-white rounded p-4 flex items-center justify-between flex-col md:flex-row gap-4"
     >
         <div>
-            <h2 class="text-xl font-semibold">Looking to hire?</h2>
+            <h2 class="text-xl font-semibold">Ready to recruit?</h2>
             <p class="text-gray-200 text-lg mt-2">
-                Post your job job now and find the perfect
-                candidate.
+                Share your job listing today and connect with the perfect candidate.
             </p>
         </div>
         <a
